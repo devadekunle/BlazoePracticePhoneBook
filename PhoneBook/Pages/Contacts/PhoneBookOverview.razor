@@ -1,0 +1,36 @@
+﻿@page "/contacts"
+@inherits PhoneBookOverviewBase
+@if (Contacts.Count < 1)
+{
+    <div class="spinner-grow text-lg-center" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+}
+else
+{
+
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center"> Contacts </h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        @foreach (var contact in Contacts)
+        {
+            <div class="col-md-3  m b-2 shadow card">
+                <img src="@contact.ImageUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@($"{contact.Title} {contact.FirstName} {contact.LastName}")</h5>
+                    <a href="@($"/details/{contact.Id}")" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+
+        }
+    </div>
+
+
+    }
+
+
